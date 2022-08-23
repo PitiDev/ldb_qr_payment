@@ -1,4 +1,6 @@
-import 'package:ldbqrpayment/ldbqrpayment.dart';
+
+
+import 'package:ldb_qr_payment/ldb_qr_payment.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,8 +1,7 @@
 name: ldb_qr_payment
 description: Flutter plugin for LDB QR Payment Lao Development Bank
 repository: https://github.com/PitiDev/ldb_qr_payment
-author: Piti Phanthasombath
-version: 1.0.0
+version: 1.0.2
 homepage: https://www.pitidev.com
 
 environment:
@@ -12,6 +11,7 @@ dependencies:
    http: ^0.13.5
    encrypt: ^5.0.1
    pointycastle: ^3.6.1
+   pubnub: ^4.2.2
 
 dev_dependencies:
   lints: ^2.0.0

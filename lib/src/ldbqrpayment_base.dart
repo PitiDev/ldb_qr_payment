@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:encrypt/encrypt.dart';
 import 'package:http/http.dart' as http;
 import 'package:pointycastle/asymmetric/api.dart';
+import 'package:pubnub/pubnub.dart';
 
 class LDBPayment {
   tokenAuthentication(String user, String pass) async {
@@ -91,4 +92,22 @@ class LDBPayment {
     final bodyQR = json.decode(resGetQR.body);
     return bodyQR;
   }
+
+  Future checkPaymentRealtime(refCheck)async{
+    var pubnub = PubNub(
+      defaultKeyset: Keyset(
+        subscribeKey: 'sub-c-e8e87ff5-d6ac-4746-89fa-a61636721cbd',
+        uuid: const UUID('LDBBANK'),
+      ),
+    );
+    // Subscribe to a channel
+    var subscription =
+    pubnub.subscribe(channels: {refCheck});
+    subscription.messages.listen((envelope) async {
+      print('LDB Res = ${envelope.payload}');
+      return envelope.payload;
+      await subscription.dispose();
+    });
+  }
+
 }
